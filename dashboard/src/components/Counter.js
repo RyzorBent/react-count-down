@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Input, Button, Row, Col, Statistic } from 'antd';
 import { ClockCircleOutlined, YoutubeOutlined } from '@ant-design/icons';
 import GlobalColors from '../assets/colors/GlobalColors';
+import dayjs from 'dayjs';
 
-const deadline = Date.now() + 1000 * 60 * 60 * 24 * 21;
+// Calculate the deadline based on a fixed end date and time
+const endDate = dayjs('2024-03-16T09:00:00'); // March 15th, 2024, at 9:00 AM
+const now = dayjs();
+const deadline = endDate.diff(now);
 
 const onFinish = () => {
   console.log('Countdown finished');
@@ -37,7 +41,7 @@ function Counter() {
       <Col style={{ textAlign: 'center' }} span={24}>
         <Statistic.Countdown
           title=''
-          value={deadline}
+          value={Date.now() + deadline}
           onFinish={onFinish}
           format='D [Days] HH [Hours] mm [Min] ss [Sec]'
           valueStyle={{ color: '#FFF', fontSize: '2rem' }}
@@ -68,7 +72,7 @@ function Counter() {
             href={link.href}
             icon={link.icon}
             target='_blank'
-            style={{ color: GlobalColors.mainPurple, fontSize: '1.5rem' }} // Adjusted font size for visibility
+            style={{ color: GlobalColors.mainPurple, fontSize: '1.5rem' }}
           />
         ))}
       </Col>
