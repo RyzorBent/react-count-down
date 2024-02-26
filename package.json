@@ -1,43 +1,22 @@
 {
-  "name": "surveyr",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@tsparticles/react": "^3.0.0",
-    "antd": "^5.14.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.1",
-    "react-scripts": "5.0.1",
-    "tsparticles": "^3.2.2",
-    "web-vitals": "^2.1.0"
-  },
+  "name": "coming-soon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dashboard": "npm start --prefix dashboard",
+    "develop": "concurrently -n 'nodejs,dashboard' -c '#966dad,#25D366' \"npm run server\" \"npm run dashboard\"",
+    "debug": "concurrently -n 'nodejs,dashboard' -c '#966dad,#25D366' \"npm run debugserver\" \"npm run dashboard\"",
+    "postinstall": "NPM_CONFIG_PRODUCTION=false cd dashboard && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.1.0"
   },
   "engines": {
     "node": "18.17.1"
