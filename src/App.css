@@ -12,6 +12,30 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.heroText {
+  font-family: 'Alfa Slab One';
+  font-weight: 600;
+  line-height: 0.9;
+  padding: 14px 0px;
+}
+.gradientText {
+  background: linear-gradient(163deg, #6a4c93, #8e43ad, #f2c511);
+  /* background: linear-gradient (124deg, #8e43ad, #2ecc70, #f2c511); */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* This is for webkit browsers */
+  display: inline-block;
+  /* Required to apply the gradient to text */
+  font-size: 72px;
+  /* Your desired font size */
+  font-weight: bold;
+}
+
+:where(.css-dev-only-do-not-override-1k979oh).ant-input-outlined:hover {
+    border-color: #6a4c93;
+    background-color: #ffffff;
+}
 
 .App-header {
   background-color: #282c34;
