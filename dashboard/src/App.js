@@ -7,7 +7,7 @@ import HeroParticles from './components/HeroParticles';
 function App() {
   return (
     <>
-      {/* <HeroParticles /> */}
+      <HeroParticles />
       <AppHeader />
       <Hero />
     </>
