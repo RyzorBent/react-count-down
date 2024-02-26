@@ -17,5 +17,5 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'developme
 }
 
 app.listen(port, () => {
-  logger.info(`:: Surveyr server running on port ${port} :: 🚀 `);
+  console.log(`:: Surveyr server running on port ${port} :: 🚀 `);
 });
