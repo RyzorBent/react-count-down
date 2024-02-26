@@ -13,3 +13,7 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'developme
     res.sendFile(path.join(__dirname, 'dashboard', 'build', 'index.html'));
   });
 }
+
+app.listen(port, () => {
+  logger.info(`:: Surveyr server running on port ${port} :: 🚀 `);
+});
