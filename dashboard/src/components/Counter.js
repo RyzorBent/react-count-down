@@ -12,7 +12,6 @@ const endDate = dayjs("2024-03-16T09:00:00");
 const now = dayjs();
 const deadline = endDate.diff(now);
 
-//use this base url
 const apiUrl = process.env.REACT_APP_BACKEND_URL;
 
 const onFinish = () => {
@@ -43,16 +42,25 @@ function Counter() {
     setName(e.target.value);
   };
 
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = async () => {
     if (!email || !name) {
-      message.error("Please enter both your name and email.");
+      StatusNotification("error", "Please enter both your name and email.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      StatusNotification("error", "Please enter a valid email address.");
       return;
     }
 
     try {
-      //use the base url
-
-      const response = await axios.post(apiUrl + "/api/earlyaccess", {
+      const response = await axios.post(`/api/earlyaccess`, {
         email,
         name,
       });

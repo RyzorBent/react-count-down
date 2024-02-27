@@ -1,24 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Surveyr coming very soon" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
-    <meta property="og:image" content="%PUBLIC_URL%/landing-social.png" />
-    <!--
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Surveyr coming very soon" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
+        <meta property="og:image" content="%PUBLIC_URL%/landing-social.png" />
+        <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Alfa+Slab+One"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
-    <!--
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Alfa+Slab+One"
+            rel="stylesheet"
+            crossorigin="anonymous"
+        />
+        <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -27,35 +27,35 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Surveyr</title>
-    <style>
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(-20px);
-        }
-        60% {
-          transform: translateY(-10px);
-        }
-      }
-      .bounce {
-        position: fixed;
-        bottom: 0px;
-        right: 0px;
-        animation: bounce 2s infinite;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+        <title>Surveyr</title>
+        <style>
+            @keyframes bounce {
+                0%,
+                20%,
+                50%,
+                80%,
+                100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-20px);
+                }
+                60% {
+                    transform: translateY(-10px);
+                }
+            }
+            .bounce {
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+                animation: bounce 2s infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -64,37 +64,36 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    --></body>
 
-  <script>
-    function waitForElement(selector, callback) {
-      console.log('waiting for element, in the selector %s', selector);
-      const interval = setInterval(function () {
-        console.log('now in the interval');
-        const element = document.querySelector(selector);
-        if (element) {
-          clearInterval(interval);
-          callback(element);
+    <script>
+        function waitForElement(selector, callback) {
+            console.log("waiting for element, in the selector %s", selector);
+            const interval = setInterval(function () {
+                console.log("now in the interval");
+                const element = document.querySelector(selector);
+                if (element) {
+                    clearInterval(interval);
+                    callback(element);
+                }
+            }, 100); // Check every 100 milliseconds
         }
-      }, 100); // Check every 100 milliseconds
-    }
 
-    waitForElement('#bp-web-widget-container', function (chatButton) {
-      console.log('waiting for element');
-      setTimeout(function () {
-        chatButton.classList.add('bounce');
-      }, 5000); // Start bouncing after 5 seconds
+        waitForElement("#bp-web-widget-container", function (chatButton) {
+            console.log("waiting for element");
+            setTimeout(function () {
+                chatButton.classList.add("bounce");
+            }, 5000); // Start bouncing after 5 seconds
 
-      // Stop the bounce animation after a couple of tries
-      setTimeout(function () {
-        chatButton.classList.remove('bounce');
-      }, 40000); // Stop bouncing after 15 seconds
-    });
-  </script>
-  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+            // Stop the bounce animation after a couple of tries
+            setTimeout(function () {
+                chatButton.classList.remove("bounce");
+            }, 40000); // Stop bouncing after 15 seconds
+        });
+    </script>
+    <!-- <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
   <script
     src="https://mediafiles.botpress.cloud/1c5d6caa-8538-48c7-a60d-43759754600b/webchat/config.js"
     defer
-  ></script>
+  ></script> -->
 </html>
