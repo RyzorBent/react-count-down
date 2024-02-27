@@ -90,26 +90,38 @@ function Counter() {
           prefix={<ClockCircleOutlined style={{ fontSize: "2rem" }} />}
           className="heroText gradientText"
         />
-        <Input.Group compact style={{ marginTop: "1em" }}>
-          <Input
-            style={{ width: "calc(60% - 100px)", height: "40px" }}
-            placeholder="Your Name"
-            value={name}
-            onChange={handleNameChange}
-          />
-          <Input
-            style={{ width: "calc(60% - 100px)", height: "40px" }}
-            placeholder="Provide email for early access 🚀"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <Button
-            type="primary"
-            style={{ height: "40px", backgroundColor: GlobalColors.mainPurple }}
-            onClick={handleSubmit}
-          >
-            Early Access
-          </Button>
+        <Input.Group style={{ marginTop: "1em", textAlign: "center" }}>
+          <Row gutter={[8, 18]} justify="space-between" align="middle">
+            <Col xs={24} md={24}>
+              <Input
+                style={{ width: "90%", height: "40px" }}
+                placeholder="Name"
+                value={name}
+                onChange={handleNameChange}
+              />
+            </Col>
+            <Col xs={24} md={24}>
+              <Input
+                style={{ width: "90%", height: "40px" }}
+                placeholder="Provide email for early access 🚀"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </Col>
+            <Col xs={24} md={24}>
+              <Button
+                type="primary"
+                style={{
+                  height: "40px",
+                  backgroundColor: GlobalColors.mainPurple,
+                }}
+                onClick={handleSubmit}
+                // block
+              >
+                Submit
+              </Button>
+            </Col>
+          </Row>
         </Input.Group>
       </Col>
       <Col span={24} style={{ textAlign: "center" }}>

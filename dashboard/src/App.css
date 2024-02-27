@@ -52,6 +52,14 @@
     color: #61dafb;
 }
 
+.customInput input {
+    color: white; /* This changes the input text color */
+}
+
+.customInput input::placeholder {
+    color: white !important;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
