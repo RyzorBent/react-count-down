@@ -16,6 +16,7 @@ function App() {
     }
     return () => clearTimeout(confettiTimeout); // clean up on unmount
   }, [showConfetti]);
+
   return (
     <>
       {showConfetti && <Confetti numberOfPieces={200} />}
