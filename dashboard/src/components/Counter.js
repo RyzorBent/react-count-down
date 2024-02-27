@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Input, Button, Row, Col, Statistic, message } from "antd";
-import { ClockCircleOutlined, YoutubeOutlined } from "@ant-design/icons";
-import GlobalColors from "../assets/colors/GlobalColors";
 import dayjs from "dayjs";
 import axios from "axios";
+
+import { Input, Button, Row, Col, Statistic, message } from "antd";
+import { ClockCircleOutlined, YoutubeOutlined } from "@ant-design/icons";
+
+import GlobalColors from "../assets/colors/GlobalColors";
+import StatusNotification from "./StatusNotification";
 
 const endDate = dayjs("2024-03-16T09:00:00");
 const now = dayjs();
@@ -54,10 +57,16 @@ function Counter() {
         name,
       });
       if (response.status === 200) {
-        message.success("Successfully signed up for early access!");
+        StatusNotification(
+          "success",
+          "Successfully signed up for early access!",
+        );
       }
     } catch (error) {
-      message.error("An error occurred while signing up for early access.");
+      StatusNotification(
+        "error",
+        "An error occurred while signing up for early access.",
+      );
     }
   };
 
