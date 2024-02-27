@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import axios from "axios";
-
 import { Input, Button, Row, Col, Statistic, message } from "antd";
 import { ClockCircleOutlined, YoutubeOutlined } from "@ant-design/icons";
 
 import GlobalColors from "../assets/colors/GlobalColors";
 import StatusNotification from "./StatusNotification";
+import SuccessResult from "./SuccessResult";
 
 const endDate = dayjs("2024-03-16T09:00:00");
 const now = dayjs();
@@ -30,9 +30,16 @@ const socialLinks = [
   },
 ];
 
-function Counter() {
+function Counter({ setShowConfetti }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [isOnWaitingList, setIsOnWaitingList] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is already on the waiting list
+    const onWaitingList = localStorage.getItem("isOnWaitingList");
+    setIsOnWaitingList(onWaitingList === "true");
+  }, []);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -71,6 +78,10 @@ function Counter() {
           "success",
           "Successfully signed up for early access!",
         );
+
+        localStorage.setItem("isOnWaitingList", "true");
+        setIsOnWaitingList(true);
+        setShowConfetti(true);
       }
     } catch (error) {
       StatusNotification(
@@ -92,39 +103,42 @@ function Counter() {
           prefix={<ClockCircleOutlined style={{ fontSize: "2rem" }} />}
           className="heroText gradientText"
         />
-        <Input.Group style={{ marginTop: "1em", textAlign: "center" }}>
-          <Row gutter={[8, 18]} justify="space-between" align="middle">
-            <Col xs={24} md={24}>
-              <Input
-                style={{ width: "90%", height: "40px" }}
-                placeholder="Name"
-                value={name}
-                onChange={handleNameChange}
-              />
-            </Col>
-            <Col xs={24} md={24}>
-              <Input
-                style={{ width: "90%", height: "40px" }}
-                placeholder="Provide email for early access 🚀"
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </Col>
-            <Col xs={24} md={24}>
-              <Button
-                type="primary"
-                style={{
-                  height: "40px",
-                  backgroundColor: GlobalColors.mainPurple,
-                }}
-                onClick={handleSubmit}
-                // block
-              >
-                Submit
-              </Button>
-            </Col>
-          </Row>
-        </Input.Group>
+        {!isOnWaitingList && (
+          <Input.Group style={{ marginTop: "1em", textAlign: "center" }}>
+            <Row gutter={[8, 18]} justify="space-between" align="middle">
+              <Col xs={24} md={24}>
+                <Input
+                  style={{ width: "90%", height: "40px" }}
+                  placeholder="Name"
+                  value={name}
+                  onChange={handleNameChange}
+                />
+              </Col>
+              <Col xs={24} md={24}>
+                <Input
+                  style={{ width: "90%", height: "40px" }}
+                  placeholder="Provide email for early access 🚀"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </Col>
+              <Col xs={24} md={24}>
+                <Button
+                  type="primary"
+                  style={{
+                    height: "40px",
+                    backgroundColor: GlobalColors.mainPurple,
+                  }}
+                  onClick={handleSubmit}
+                  // block
+                >
+                  Submit
+                </Button>
+              </Col>
+            </Row>
+          </Input.Group>
+        )}
+        {isOnWaitingList && <SuccessResult />}
       </Col>
       <Col span={24} style={{ textAlign: "center" }}>
         {socialLinks.map((link) => (

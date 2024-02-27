@@ -10,7 +10,7 @@ import Counter from "./Counter";
 const { Title, Text, Paragraph } = Typography;
 const { useBreakpoint } = Grid;
 
-const Hero = () => {
+const Hero = ({ setShowConfetti }) => {
   const screens = useBreakpoint();
 
   const screenSize = getScreenSize(screens);
@@ -56,7 +56,7 @@ const Hero = () => {
                   </Paragraph>
                 </Col>
                 <Col style={{ textAlign: "center" }}>
-                  <Counter />
+                  <Counter setShowConfetti={setShowConfetti} />
                 </Col>
               </Row>
             </Col>
