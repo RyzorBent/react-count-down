@@ -64,6 +64,8 @@ function Counter() {
         email,
         name,
       });
+
+      console.log(response.status);
       if (response.status === 200) {
         StatusNotification(
           "success",

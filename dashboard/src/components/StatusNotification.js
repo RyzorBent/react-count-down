@@ -1,22 +1,32 @@
+import React from "react";
 import { notification } from "antd";
 import { FrownTwoTone, SmileTwoTone, WarningTwoTone } from "@ant-design/icons";
 import GlobalColors from "../assets/colors/GlobalColors";
 
-const StatusNotification = (type, title, message = {}) => {
-  let icn;
-  if (type === "success")
-    icn = <SmileTwoTone twoToneColor={GlobalColors.lightPurple} />;
-  else if (type === "warning")
-    icn = <WarningTwoTone twoToneColor={GlobalColors.lightPurple} />;
-  else icn = <FrownTwoTone twoToneColor={GlobalColors.lightPurple} />;
+const StatusNotification = (type, title, message) => {
+  let icon;
 
-  let duration = 6.5;
+  switch (type) {
+    case "success":
+      icon = <SmileTwoTone twoToneColor={GlobalColors.lightPurple} />;
+      break;
+    case "warning":
+      icon = <WarningTwoTone twoToneColor={GlobalColors.lightPurple} />;
+      break;
+    case "error":
+      icon = <FrownTwoTone twoToneColor={GlobalColors.lightPurple} />;
+      break;
+    default:
+      icon = <FrownTwoTone twoToneColor={GlobalColors.lightPurple} />;
+  }
+
+  const duration = 6.0;
 
   notification[type]({
-    icon: icn,
     message: title,
     description: message,
-    duration,
+    duration: duration,
+    icon,
     style: {
       borderRadius: "6px",
       backgroundColor: "#f5f5f5",
